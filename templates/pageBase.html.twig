@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>JobsHunter</title>
+
+    <!-- Custom fonts for this template-->
+    {#    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">#}
+
+    <!-- Custom styles for this template-->
+    <link href = "../bootstrap/dist/css/bootstrap.css" rel = "stylesheet" type = "text/css">
+    <link href = "../styles/style.css" rel = "stylesheet" type = "text/css">
+</head>
+
+<body class = "">
+
+<!-- CONTENT -->
+<div class = "custom-row flex-fill">
+    <div class = col-sm-12>
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">JobsHunter</a>
+            <ul class="list-group-horizontal navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/ads">Our current ads<span class="sr-only">(current)</span></a>
+                </li>
+                {% if user is null %}
+                {% elseif user.getRole() == 'user' %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="userMenu">
+                            Your account
+                        </a>
+                    </li>
+                {% elseif user.getRole() == 'contact' %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="companyMenu">
+                            Company account
+                        </a>
+                    </li>
+                {% elseif user.getRole() == 'admin' %}
+                    <a class="nav-link" href="adminMenu">
+                        Admin Menu
+                    </a>
+                {% endif %}
+
+            </ul>
+
+            <span class="navbar-text">
+                        {% if app.user %}
+                            Welcome {{ app.user.getFirstName() }} <a href="{{ path('app_logout') }}">Logout</a>
+                        {% else %}
+                            <a href="{{ path('app_login') }}">Login</a> or <a href="{{ path('registerPage') }}">Register</a>
+                        {% endif %}
+                        </span>
+        </nav>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.js"></script>
+
+<!-- Custom JavaScript-->
+<script src="../js/script.js"></script>
+
+</body>
+</html>

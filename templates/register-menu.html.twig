@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div class = row>
+    <div class = "col-lg-5 d-none d-lg-block">
+        <div style = "background-image: url('https://picsum.photos/id/1/'); height : 100%;">
+
+        </div>
+    </div>
+    <div class = "col-lg-7 col-md-12">
+        <div class = "p-2">
+            <div class = "text-center register-title">
+                You are a :
+            </div>
+        </div>
+        <div class = row>
+            <div class = "col-sm-12">
+                <a href = {{ path('registerPage') }}>
+                <div class = 'register-button p-2 mr-4 mb-3 text-center'>
+                    Job Hunter
+                </div>
+                </a>
+            </div>
+            <div class = "col-sm-12">
+                <a href = {{ path('registerCompany') }}>
+                <div class = 'register-button-company p-2 mr-4 mb-4 text-center'>
+                    Company
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

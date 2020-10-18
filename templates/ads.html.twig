@@ -1,0 +1,82 @@
+{% extends 'pageBase.html.twig' %}
+{% block content %}
+    <!-- TOPBAR -->
+    <div class = row>
+        <div class = "col-sm-12">
+            <div class = "topbar row">
+                <div class = "col-sm-7">
+                    <div class="searchBar">
+                        <input type="text" id = "textSearch" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    </div>
+                    <div>
+                        <button id = "searchButton" class = "btn btn-primary searchBarButton">Search</button>
+                    </div>
+                </div>
+                <div class = col-sm-5>
+                </div>
+            </div>
+        </div>
+        <!-- END TOPBAR -->
+        <div class = "col-sm-12">
+            <!-- ADS -->
+            {% for ad in ads %}
+                <div class = "card advertCard advertBody">
+                    <div class = "card-header">
+                        <div class = row>
+                            <div class = "col-sm-10">
+                                <div class = "d-inline-block pt-2 pl-3">
+                                    <span class = "advert advertTitle" > {{ ad.getTitle() }} - {{ ad.getPlace() }}  </span>
+                                </div><br>
+
+                                <div class = "d-inline-block pt-2 pl-3 pb-2 text-justify magic">
+                                <span>
+                                    {{ ad.getDescription() }}
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class = "col-sm-2">
+                                <div class = "container d-flex h-100">
+                                    <div class="row justify-content-center align-self-center ml-0">
+                                        <a class="btn btn-primary nav-link" href="#MyCollapseCard{{ ad.getId() }}" data-toggle="collapse" role="button"
+                                           aria-expanded="true" aria-controls="MyCollapseCard{{ ad.getId() }}">
+                                            Learn more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapse" id="MyCollapseCard{{ ad.getId() }}">
+                        <div class = row>
+                            <div class = "col-sm-12 col-md-5">
+                                <div class = "pl-2 pt-2" style = "min-height : 7rem">
+                                    {#                                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?#}
+                                    {{ ad.getDescription() }}
+                                </div>
+                            </div>
+                            <div class = "col-sm-12 col-md-5">
+                                <div class = "pl-2 pt-2">
+                                    Wage : {{ ad.getWage() }} <br>
+                                    Location : {{ ad.getPlace() }}<br>
+                                    Contact : {{ ad.getCompany().getContact().0.getEmail() }}<br>
+                                </div>
+                            </div>
+                            <div class ="col-sm-12 col-md-2 d-flex align-items-center justify-content-center">
+                                <div class = "align-middle d-inline-block">
+                                    <button type="button" class="btn btn-success">
+                                        <a href="{{ path('applyForm',{id: ad.id }) }}" class="btn btn-success">Apply</a>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    <!-- END ADS -->
+    <!-- END CONTENT -->
+{% endblock %}

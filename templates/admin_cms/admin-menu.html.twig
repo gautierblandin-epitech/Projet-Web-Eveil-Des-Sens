@@ -1,0 +1,148 @@
+{% extends 'pageBase.html.twig' %}
+
+{% block content %}
+<!-- CONTENT -->
+<div class = "custom-row flex-fill">
+    <!-- TOPBAR -->
+
+    <!-- END TOPBAR -->
+
+    <div class = "col-sm-12">
+        <!-- ADS -->
+        <div class = row >
+            <div class = "col-sm-12 text-center title">
+                Ads
+            </div>
+            <div class = col-sm-12>
+                <a class="btn btn-success nav-link" href="{{ path('create_ad') }}">
+                    Create Ad
+                </a>
+            </div>
+        </div>
+        {% for ad in ads %}
+            <div class = "row border">
+                <div class = col-sm-6>
+                    Title : {{ ad.getTitle() }} / ID : {{ ad.getId() }} <br>
+                    Description : {{ ad.getTitle() }} <br>
+                </div>
+                <div class = col-sm-3>
+                    Wage : {{ ad.getWage() }} <br>
+                    Place : {{ ad.getPlace() }} <br>
+                    Company : {{ ad.getCompany().getName() }} <br>
+                    Creation Date : {{ ad.getCreationDate|date("m/d/Y") }} <br>
+                    End Date : {{ ad.getEndDate|date("m/d/Y") }}
+                </div>
+                <div class = col-sm-3>
+                    <a class="btn btn-danger nav-link" href="deleteAd/{{ad.id}}">
+                        Delete
+                    </a>
+                    <a class="btn btn-success bg-orange nav-link" href="updateAd/{{ad.id}}">
+                        Update
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        <div class = row >
+            <div class = "col-sm-12 text-center title">
+                Users
+            </div>
+            <div class = col-sm-12>
+                <a class="btn btn-success nav-link" href="createUser">
+                    Create User
+                </a>
+            </div>
+        </div>
+        {% for user in users %}
+            <div class = "row border">
+                <div class = col-sm-6>
+                    Title : {{ user.getEmail() }} / ID : {{ user.getId() }} <br>
+                    Password : {{ user.getPassword() }} <br>
+                    Phone Number : {{ user.getPhoneNumber() }}
+                </div>
+                <div class = col-sm-3>
+                    First Name : {{ user.getFirstName() }} <br>
+                    Last Name : {{ user.getLastName() }} <br>
+                    Address : {{ user.getAdress }} <br>
+                    Born on : {{ user.getBirthdate()|date("m/d/Y") }}
+                </div>
+                <div class = col-sm-3>
+                    <a class="btn btn-danger nav-link" href="deleteUser/{{user.id}}">
+                        Delete
+                    </a>
+                    <a class="btn btn-success bg-orange nav-link" href="updateUserAdmin/{{user.id}}">
+                        Update
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        <div class = row >
+            <div class = "col-sm-12 text-center title">
+                Companies
+            </div>
+            <div class = col-sm-12>
+                <a class="btn btn-success nav-link" href="createCompany">
+                    Create Company
+                </a>
+            </div>
+        </div>
+        {% for company in companies %}
+            <div class = "row border">
+                <div class = col-sm-6>
+                    Name : {{ company.getName() }} / ID : {{ company.getId() }} <br>
+                    City : {{ company.getCity() }}
+                    {% set contacts = company.getContact() %} <br>
+                    {% for contact in contacts %}
+                        Contact : {{ contact.getEmail() }} <br>
+                    {% endfor %}
+                </div>
+                <div class = col-sm-3>
+                </div>
+                <div class = col-sm-3>
+                    <a class="btn btn-danger nav-link" href="deleteCompany/{{ company.getId() }}">
+                        Delete
+                    </a>
+                    <a class="btn btn-success bg-orange nav-link" href="updateCompany/{{ company.getId() }}">
+                        Update
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        <div class = row >
+            <div class = "col-sm-12 text-center title">
+                Applications
+            </div>
+        </div>
+        {% for application in applications %}
+            <div class = "row border">
+                <div class = "col-sm-9">
+                    <div class = row>
+                        <div class = col-sm-6>
+                            ID : {{ application.getId() }} <br>
+                            Email : {{ application.getEmail() }}<br>
+                            Phone Number : {{ application.getPhone() }}
+                        </div>
+                        <div class = col-sm-6>
+                            First Name : {{ application.getFirstName() }} <br>
+                            Last Name : {{ application.getLastName() }} <br>
+                        </div>
+                        <div class = col-sm-12>
+                            Message : {{ application.getMessage() }}
+                        </div>
+                    </div>
+                </div>
+                <div class = col-sm-3>
+                    <a class="btn btn-danger nav-link" href="/deleteApplication/{{ application.getId() }}">
+                        Delete
+                    </a>
+                    <a class="btn btn-success bg-orange nav-link" href="/updateApplication/{{ application.getId() }}">
+                        Update
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- END ADS -->
+</div>
+<!-- END CONTENT -->
+
+{% endblock %}

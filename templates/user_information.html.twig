@@ -1,0 +1,57 @@
+{% extends "pageBase.html.twig" %}
+{% block content %}
+    <div class = "row">
+    {#                        Background Image Column#}
+    <div class = "col-lg-2">
+
+    </div>
+
+    <div class = "col-lg-8 text-center">
+        <div class="well profile">
+            <h2 class="text-center">{{ user.getFirstName() }} {{ user.getLastName() }}</h2>
+            <div class = "row text-left">
+                <div class="col-xs-12 col-sm-6">
+                    <p><strong>About: </strong>
+                    <ul>
+                        <li>{{ user.getGender() }} </li>
+                        <li>{{ user.getBirthdate()|date("d/m/Y") }} </li>
+                        <li>{{ user.getFirstName() }} </li>
+                    </ul>
+                    </p>
+
+                    <p><strong>Previous working experience: </strong><br>
+                        {{ user.getExperience() }}
+                    </p>
+
+                    <p><strong>Studied: </strong>
+                        <span class="tags">{{ user.getStudies() }}</span>
+                    </p>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <p><strong>Contact: </strong> <br><br>
+                        <b>Email adress:</b> {{ user.getEmail() }}<br>
+                        <b>Phone number:</b> {{ user.getPhoneNumber() }}<br>
+                        <b>Adress:</b> {{ user.getAdress() }} <br>
+                    </p>
+                </div>
+            </div>
+
+            <div class = "row text-center">
+                <div class="col-xs-12 col-sm-12 divider center text-center">
+                    <div class="col-xs-12 col-sm-4 emphasis text-center">
+                        <h2><strong> {{user.getApplies()|length }} </strong></h2>
+                        <p><small>Applications sent</small></p>
+                        <button type="button" class="btn btn-success btn-block">
+                            <a href="{{ path('userMenu')}}" class="btn btn-success"><span class="fa fa-plus-circle"></span> See</a>
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

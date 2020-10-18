@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>JobsHunter</title>
+
+    <!-- Custom fonts for this template-->
+    {#    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">#}
+
+    <!-- Custom styles for this template-->
+    <link href = "../bootstrap/dist/css/bootstrap.css" rel = "stylesheet" type = "text/css">
+    <link href = "../styles/style.css" rel = "stylesheet" type = "text/css">
+</head>
+
+<body class = "d-flex bg-primary">
+
+<div class = container>
+    <div class = "row justify-content-center">
+        <div class = "col-lg-12 justify-content-center">
+            <div class = "card o-hidden border-0 shadow-lg my-5 justify-content-center text-center">
+                <div class = "card-body p-0">
+                    <div class = "row">
+{#                        Background Image Column#}
+                        <div class = "col-lg-5"> bg image</div>
+{#                        Form Column#}
+                        <div class = "col-lg-7">
+                            <div class = "p-5 ">
+                                <div class = "text-center register-title m-3">
+                                    Register !
+                                </div>
+                                {{ form_start(form) }}
+                                {{ form_errors(form) }}
+                                <div class = row>
+                                    <div class = col-lg-6>
+                                        <div class = 'register-input m-2 p-2 text-left'>
+                                            {{ form_row(form.first_name) }}
+                                        </div>
+                                    </div>
+                                    <div class = col-lg-6>
+                                        <div class = 'register-input m-2 p-2 text-left'>
+                                            {{ form_row(form.last_name) }}
+                                        </div>
+                                    </div>
+                                    <div class = col-lg-12>
+                                        <div class = 'register-input m-2 p-2 text-left'>
+                                            {{ form_row(form.email) }}
+                                        </div>
+                                    </div>
+                                    <div class = col-lg-6>
+                                        <div class = 'register-input m-2 p-2 text-left'>
+                                            {{ form_row(form.password.first) }}
+                                        </div>
+                                    </div>
+                                    <div class = col-lg-6>
+                                        <div class = 'register-input m-2 p-2 text-left'>
+                                            {{ form_row(form.password.second) }}
+                                        </div>
+                                    </div>
+                                    <div class = col-lg-12>
+                                        <div class = 'register-button m-2 p-2 text-center'>
+                                            {{ form_row(form.register) }}
+                                        </div>
+                                    </div>
+                                    {{ form_end(form) }}
+                                    <div class = "col-lg-12 text-right">
+                                        <div class = "pr-2">
+                                          <a href = {{ path('app_login') }}> Working for a company ? Register here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+{#                    {{ form_start(form) }}#}
+{#                    {{ form_errors(form) }}#}
+{#                    #}
+{#                    {{ form_row(form.email) }}#}
+{#                    {{ form_row(form.password) }}#}
+{#                    {{ form_row(form.first_name) }}#}
+{#                    {{ form_row(form.last_name) }}#}
+
+{#                    {{ form_row(form.register) }}#}
+{#                    {{ form_end(form) }}#}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.js"></script>
+
+<!-- Custom JavaScript-->
+<script src="../js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <div class = "row">
+        {#                        Background Image Column#}
+        <div class = "col-lg-5">
+            <img src="https://picsum.photos/id/199/475/623" style="height: 100%; width: 100%">
+        </div>
+        {#                        Form Column#}
+        <div class = "col-lg-7">
+            <div class = "p-5 ">
+                <div class = "text-center register-title m-3">
+                    Send your application form !
+                </div>
+                {{ form(form) }}
+
+                <div class = "col-lg-12 text-right">
+                    <div class = "pr-2">
+                        <a href = {{ path('registerCompany') }}> You can edit your application form later <b>here</b> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
